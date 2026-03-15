@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dnt5viabrty22"]
+
+[ext_resource type="Script" uid="uid://bhf45m50fselu" path="res://InteractableObject/Scripts/interactable_object.gd" id="1_ne15x"]
+[ext_resource type="Texture2D" uid="uid://cgmvhefaklabn" path="res://tile map/sprites/Room 1/Book shelf.png" id="2_md5dj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3klc"]
+size = Vector2(21, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcilo"]
+size = Vector2(19, 64)
+
+[node name="InteractableObject" type="StaticBody2D" unique_id=322216261]
+position = Vector2(49, -44)
+script = ExtResource("1_ne15x")
+
+[node name="BookShelf" type="Sprite2D" parent="." unique_id=1663381221]
+position = Vector2(62.999992, -9)
+scale = Vector2(0.37875, 0.38708332)
+texture = ExtResource("2_md5dj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1702726445]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_y3klc")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=76123524]
+position = Vector2(-2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1726699762]
+position = Vector2(5, -1)
+shape = SubResource("RectangleShape2D_bcilo")
+
+[node name="Label" type="Label" parent="." unique_id=1129498448]
+visible = false
+offset_left = 32.0
+offset_top = -62.0
+offset_right = 238.0
+offset_bottom = -39.0
+text = "U can't interact right now.."
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
